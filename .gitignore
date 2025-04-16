@@ -110,3 +110,12 @@ venv.bak/
 
 # Local data
 data/
+
+#For this project
+.env
+__pycache__/
+*.pyc
+*.DS_Store
+venv/
+*.sqlite3
+*.log
