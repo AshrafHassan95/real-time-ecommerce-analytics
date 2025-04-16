@@ -1,0 +1,7 @@
+boto3==1.26.0
+Flask==2.2.2
+mysql-connector-python==8.0.31
+pandas==1.5.2
+faker==15.3.3
+python-dotenv==0.21.0
+plotly==5.11.0

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>E-commerce Analytics Dashboard</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>Real-time E-commerce Analytics</h1>
+    <div id="chart"></div>
+    
+    <script>
+        var graph = {{ graphJSON | safe }};
+        Plotly.newPlot('chart', graph, {});
+    </script>
+</body>
+</html>
