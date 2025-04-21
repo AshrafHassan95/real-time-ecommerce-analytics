@@ -1,16 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>E-commerce Analytics Dashboard</title>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <title>E-Commerce Analytics Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .chart-container {
+            margin-bottom: 30px;
+            border: 1px solid #eee;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .insight-card {
+            margin-bottom: 15px;
+            padding: 15px;
+            border-left: 4px solid #0d6efd;
+            background-color: #f8f9fa;
+        }
+        .dashboard-header {
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+    </style>
 </head>
 <body>
-    <h1>Real-time E-commerce Analytics</h1>
-    <div id="chart"></div>
-    
-    <script>
-        var graph = {{ graphJSON | safe }};
-        Plotly.newPlot('chart', graph, {});
-    </script>
+    <div class="container mt-4">
+        <div class="dashboard-header">
+            <h1>Real-Time E-Commerce Analytics</h1>
+            <p class="text-muted">Last updated: {{ now }}</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <div class="chart-container">
+                    {{ category_chart|safe }}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="chart-container">
+                    {{ activity_chart|safe }}
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8">
+                <div class="chart-container">
+                    {{ time_chart|safe }}
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h3>Latest AI Insights</h3>
+                {% for insight in ai_insights %}
+                <div class="insight-card">
+                    <h5>{{ insight[0] }}</h5>
+                    <p>{{ insight[1] }}</p>
+                    <small class="text-muted">{{ insight[2] }}</small>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 </body>
 </html>
